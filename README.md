@@ -39,7 +39,41 @@ Clean the data up so that it was usable for our model. I made the following chan
 * Transforming duration feature into another one that holds the same information but only in minutes
 * Standardizing float features using a standard scaler
 * Dropping outliers
-* Dropping duplicates within Artist and Track Name features
+* Getting rid of duplicates within Artist and Track Name features
 
 ## EDA
 I looked at the distributions of the data and the value counts for the various categorical variables to get meaningful insights from our data. Below are the visualizations I made :<br><br>
+<img src="pop_dist.png"><br>
+<img src="rel_pop_class.png"><br>
+<img src="pop_box.png"><br>
+<img src="corr_mat.png">
+
+## Model Building
+After making all those changes on the data wrangling process and because our data is already divided into training and test sets, we passed by Feature Selection phase using 4 different methods (Variance Threshold technique, KBest technqiue, Correlation technique & Recursive Feature Elimination technique) and tried eleven different classifiers and evaluated them by calculating accuracy performance metric on the training and test data to make sure we avoided UNDERFITTING & OVERFITTING in the process of training and prediction :
+* Logistic Regression
+* Decision Tree Classifier
+* Random Forest Classifier
+* Support Vector Machines (SVM)
+* K-Neighbors Classifier
+* Gaussian Naive Bayes
+* Linear SVC
+* Gradient Boosting Classifier
+* Stochastic Gradient Descent Classifier
+* Perceptron
+* XgBoost
+
+After getting an idea on the best estimator which can best performed, we applied a PCA transformation on our data with 14 components, trained our model again using `Cross-Validation technique` and as a result maximize test accuracy score.
+
+## Model Performance
+After applying `Cross-Validation` technique, XgBoost model had the best test accuracy score which means they are the best classifiers for our problem.
+* Logistic Regression : testing accuracy = 45.76 %
+* Decision Tree Classifier : testing accuracy = 33.64 %
+* Random Forest Classifier : testing accuracy = 48.09 %
+* Support Vector Machines (SVM) : testing accuracy = 49.09 %
+* K-Neighbors Classifier : testing accuracy = 44.58 %
+* Gaussian Naive Bayes : testing accuracy = 38.4 %
+* Linear SVC : testing accuracy = 45.31 %
+* Gradient Boosting Classifier : testing accuracy = 52.46 %
+* Stochastic Gradient Descent Classifier : testing accuracy = 40.1 %
+* Perceptron : testing accuracy = 32.7 %
+* XgBoost : testing accuracy = 55.17 %
